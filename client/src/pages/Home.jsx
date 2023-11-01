@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import bgImage from '../assets/images/bg.jpg'; 
 import logo from '../assets/images/bit.png'
-const bg= 'https://www.bitmesra.ac.in/UploadedDocuments/user_admindeoghar/Header/Header4852371f5c88441dab8c58e3bf26d9bb_College%20Photo%202.jpg'
+
 
 export default function Home() {
   const [formData, setFormData] = useState({});
@@ -13,8 +13,9 @@ export default function Home() {
     });
   };
   console.log(formData);
-  const handleSubmit=(e)=>{
+  const handleSubmit=async (e)=>{
     e.preventDefault();
+    const res = await fetch('api/auth/signup', formData);
   }
   return (
     <div
