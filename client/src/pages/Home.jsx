@@ -1,32 +1,49 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import bgImage from '../assets/images/bg.jpg'; 
 import logo from '../assets/images/bit.png'
 
 
 export default function Home() {
   const [formData, setFormData] = useState({});
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleChange =(e)=>{
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
-  console.log(formData);
   const handleSubmit=async (e)=>{
     e.preventDefault();
-    const res = await fetch('api/auth/signup', 
-    {
-      method: 'POST',
-      headers:
+    try {
+      
+      setLoading(true);
+      const res = await fetch('api/auth/signup', 
       {
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify(formData),
+        method: 'POST',
+        headers:
+        {
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify(formData),
+      }
+      );
+      const data = await res.json();
+      if(data.success == false)
+      {
+        setError(data.error);
+        setLoading(false);
+        return;
+      }
+      setLoading(false);
+      setError(null);
+      navigate('/sign-in');
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
     }
-    );
-    const data = await res.json();
-    console.log(data);
   };
   return (
     <div
@@ -43,10 +60,12 @@ export default function Home() {
       <div className='p-3 max-w-lg mx-auto'>
         <p className='font-montserrat  text-white tracking-widest text-shadow text-sm sm:text-md my-1 mb-4  mx-20'>Welcome, Please Sign Up to Continue!</p>
         <form onSubmit={handleSubmit} className='flex flex-col gap-4' >
-          <input type="username" placeholder='Username' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='username'  onChange={handleChange}/>
-          <input type="email" placeholder='Email Address' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='email'  onChange={handleChange}/>
-          <input type="password" placeholder='Password' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='password' onChange={handleChange}/>
-          <button className='bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-md  hover:opacity-80 font-montserrat tracking-widest'>Sign up</button>
+          <input type="username" placeholder='Username' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='username'  onChange={handleChange} required/>
+          <input type="email" placeholder='Email Address' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='email'  onChange={handleChange} required/>
+          <input type="password" placeholder='Password' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='password' onChange={handleChange} required/>
+          <button disabled={loading} className='bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-md  hover:opacity-80 font-montserrat tracking-widest'>
+            {loading ? 'Loading...':'Sign Up'}
+            </button>
         </form>
         <div className='flex flex-2 gap-2 text-white my-1 mx-2' >
           <p >Already have an account?</p>
@@ -54,6 +73,7 @@ export default function Home() {
             <span className='text-yellow-300 font-semibold'>Sign in</span>
           </Link>
         </div>
+        {error && <p className='text-yellow-300 font-semibold'>{error}</p> }
       </div>
       </div>
     </div>
