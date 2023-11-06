@@ -19,6 +19,7 @@
     "mongodb": "^6.2.0",
     "mongoose": "^7.6.3",
     "nodemon": "^3.0.1",
+    "react-icons": "^4.11.0",
     "redux-persist": "^6.0.0"
   }
 }
