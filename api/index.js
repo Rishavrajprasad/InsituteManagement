@@ -6,6 +6,8 @@ import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import facultysalarylistingRouter from './routes/facultysalarylisting.route.js';
 import staffsalarylistingRouter from './routes/staffsalarylisting.route.js';
+import messcontractorlistingRouter from './routes/messcontractorlisting.route.js';
+import securitycontractorlistingRouter from './routes/securitycontractor.route.js';
 
 
 dotenv.config();
@@ -27,6 +29,8 @@ app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
 app.use('/api/facultysalarylisting',facultysalarylistingRouter); 
 app.use('/api/staffsalarylisting',staffsalarylistingRouter);
+app.use('/api/messcontractorlisting',messcontractorlistingRouter);
+app.use('/api/securitycontractorlisting',securitycontractorlistingRouter);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
