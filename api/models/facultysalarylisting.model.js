@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const listingSchema = new mongoose.Schema(
+const facultysalarylistingSchema = new mongoose.Schema(
     {
         fname:{
             type:String,
@@ -34,6 +34,6 @@ const listingSchema = new mongoose.Schema(
     },{timestamps : true}
 )
 
-const Listing = mongoose.model('Faculty_salary', listingSchema);
+const Listing = mongoose.model('facultysalary', facultysalarylistingSchema);
 
 export default Listing;
