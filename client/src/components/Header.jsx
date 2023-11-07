@@ -42,7 +42,7 @@ export default function Header() {
         </Link>
 
         <ul className='flex gap-5'>
-          <Link to='/'>
+          <Link to='/dashboard'>
             <li className='hidden sm:inline text-lg text-slate-700 hover:underline'>
               Home
             </li>

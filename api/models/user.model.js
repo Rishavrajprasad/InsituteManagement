@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema ({
     },
     fullname : {
         type: String,
-        default:"Profile",
+        default:"Profile"
     }
 }, {timestamps: true});
 
