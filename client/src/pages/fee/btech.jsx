@@ -3,7 +3,7 @@ import React from 'react';
 import bgImage from '../../assets/images/bg.jpg';
 import Header from '../../components/Header';
 
-export default function MessContractor() {
+export default function Btech() {
   return (
     <div>
         <div>
@@ -17,14 +17,27 @@ export default function MessContractor() {
         }}
       >
         <div className="text-white text-md md:text-3xl uppercase font-bold text-center py-5">
-          Mess Contractor
+          B.Tech Student Fee Management
         </div>
         <div className='p-3 max-w-lg mx-auto'>
             <form className='flex flex-col gap-4' >
-          <input type="text" placeholder='Contractor Name' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='cname'required/>
+          <input type="text" placeholder='Full Name' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='fname'required/>
           <input type="email" placeholder='Email' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='email'required/>
           <input type="tel" placeholder='Phone Number' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='phone'required/>
-        <input type="text" placeholder='Mess Bill' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='mbill'required/>
+          <select id="branchselect" className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none'>
+                <option value="" disabled selected>Select Branch</option>
+                <option value="cse" id='cse'>Computer Science and Engineering</option>
+                <option value="ece" id ='ece'>Electronics & Communication Engineering</option>
+                <option value="eee" id ='eee'>Electrical and Electronics Engineering</option>
+                <option value="me" id ='me'>Mechanical Engineering</option>
+        </select>
+        <select id="postselect" className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none'>
+                <option value="" disabled selected>Select Position</option>
+                <option value="hod" id ='hod'>Head of Department</option>
+                <option value="aprof" id ='aprof'>Associate Professor</option>
+                <option value="prof" id = 'prof'>Professor</option>
+        </select>
+        <input type="text" placeholder='Salary Amount' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='salary'required/>
         <select id="month" className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none'>
                 
                 <option value="" disabled selected>Select Month</option>
