@@ -12,6 +12,10 @@ import Faculty from './pages/salary/Faculty'
 import Staff from './pages/salary/Staff'
 import MessContractor from './pages/salary/MessContractor'
 import Security from './pages/salary/Security'
+import Btech from './pages/fee/btech'
+import bba from './pages/fee/bba'
+import Bba from './pages/fee/bba'
+import Bca from './pages/fee/bca'
 
 
 export default function App() {
@@ -32,6 +36,10 @@ export default function App() {
           <Route path='/staff' element={<Staff />} />
           <Route path='/messcontractor' element={<MessContractor />} />
           <Route path='/security' element={<Security />} />
+          <Route path='/fee/btech' element={<Btech/>} />
+          <Route path='/fee/bba' element={<Bba />} />
+          <Route path='/fee/bca' element={<Bca />} />
+
         </Route>
       
     </Routes>
