@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const securitycontractorlistingSchema = new mongoose.Schema(
     {
-        fname:{
+        cname:{
             type:String,
             required:true,
         },
@@ -12,14 +12,6 @@ const securitycontractorlistingSchema = new mongoose.Schema(
         },
         phone:{
             type:Number,
-            required:true,
-        },
-        branchselect:{
-            type:String,
-            required:true,
-        },
-        postselect:{
-            type:String,
             required:true,
         },
         salary:{

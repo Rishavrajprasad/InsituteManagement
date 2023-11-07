@@ -13,11 +13,10 @@ export default function Security() {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     
-    fname: '',
+    cname: '',
     email: '',
     phone: '',
    
-    postselect: '',
     salary: 0,
     month: '',
   });
@@ -44,7 +43,7 @@ export default function Security() {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/listing/create', {
+      const res = await fetch('/api/securitycontractorlisting/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,6 +64,7 @@ export default function Security() {
       setLoading(false);
     }
   };
+
   return (
     <div>
         <div>
@@ -74,7 +74,7 @@ export default function Security() {
         <div
         className="bg-cover bg-center h-screen"
         style={{
-          backgroundImage: `url(${bgImage})`, // Use the imported image
+          backgroundImage: `url(${bgImage})`, 
         }}
       >
         <div className="text-white text-md md:text-3xl uppercase font-bold text-center py-5">
@@ -82,18 +82,19 @@ export default function Security() {
         </div>
         <div className='p-3 max-w-lg mx-auto'>
             <form onSubmit={handleSubmit} className='flex flex-col gap-4' >
-          <input type="text" placeholder='Contractor Name' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='cname' onChange={handleChange}
-            value={formData.fname} required/>
+          <input type="text" placeholder='Contractor Name' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='cname'onChange={handleChange}
+            value={formData.cname}
+            required/>
           <input type="email" placeholder='Email' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='email' onChange={handleChange}
-            value={formData.email} required/>
+            value={formData.email}
+            required/>
           <input type="tel" placeholder='Phone Number' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='phone' onChange={handleChange}
             value={formData.phone} required/>
-          
-        
-        <input type="text" placeholder='Bill Amount' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='mbill'required onChange={handleChange}
+        <input type="text" placeholder='Salary Amount' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='salary'required
+        onChange={handleChange}
         value={formData.salary}/>
         <select id="month" className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' onChange={handleChange}
-            value={formData.month}>
+            value={formData.month} required>
                 
                 <option value="" disabled selected>Select Month</option>
                 <option value="January">January</option>
@@ -110,10 +111,11 @@ export default function Security() {
                 <option value="December">December</option>
 
         </select>
-        </form>
         <button disabled={loading} className='w-full bg-green-700  text-white rounded-lg p-3 my-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Adding...' : 'Add to Database'}</button>
         <button className='w-full bg-slate-700  text-white rounded-lg p-3  uppercase hover:opacity-95 disabled:opacity-80'>Update Details</button>
         {error && <p className='text-red-700 text-sm'>{error}</p>}
+        </form>
+        
         </div>
         
 
