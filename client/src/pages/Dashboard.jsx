@@ -15,7 +15,7 @@ export default function Dashboard() {
           backgroundImage: `url(${bgImage})`, // Use the imported image
         }}
       >
-        <div className="text-slate-900 text-md md:text-3xl uppercase font-bold text-center pt-5">
+        <div className="text-white text-md md:text-3xl uppercase font-bold text-center pt-5">
           Welcome to Birla Institute of Technology, Deoghar
         </div>
 

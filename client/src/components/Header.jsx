@@ -11,7 +11,7 @@ export default function Header() {
     const dispatch = useDispatch();
     const { currentUser } = useSelector((state) => state.user);
     const handleSignOut = async () => {
-
+    const fullName= currentUser.fullName == ''? 'Profile': currentUser.fullname;
       try {
         dispatch(signOutUserStart())
         const res = await fetch('/api/auth/signout');
@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header className='bg-slate-200 shadow-md'>
       <div className='flex justify-between items-center max-w-8xl mx-auto p-3 px-10'>
-        <Link to='/'>
+        <Link to='/dashboard'>
           <h1 className='font-bold text-sm sm:text-xl flex items-center flex-wrap'>
             <img
               src={logo}
