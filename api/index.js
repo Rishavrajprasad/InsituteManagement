@@ -8,6 +8,11 @@ import facultysalarylistingRouter from './routes/facultysalarylisting.route.js';
 import staffsalarylistingRouter from './routes/staffsalarylisting.route.js';
 import messcontractorlistingRouter from './routes/messcontractorlisting.route.js';
 import securitycontractorlistingRouter from './routes/securitycontractor.route.js';
+import btechfeelistingRouter from './routes/btechfeelisting.route.js';
+import bcafeelistingRouter from './routes/bcafeelisting.route.js';
+import bbafeelistingRouter from './routes/bbafeelisting.route.js';
+import billslistingRouter from './routes/billslisting.route.js';
+import purchaselistingRouter from './routes/purchaselisting.route.js';
 
 
 dotenv.config();
@@ -31,6 +36,12 @@ app.use('/api/facultysalarylisting',facultysalarylistingRouter);
 app.use('/api/staffsalarylisting',staffsalarylistingRouter);
 app.use('/api/messcontractorlisting',messcontractorlistingRouter);
 app.use('/api/securitycontractorlisting',securitycontractorlistingRouter);
+app.use('/api/btechfeelisting',btechfeelistingRouter);
+app.use('/api/bcafeelisting',bcafeelistingRouter);
+app.use('/api/bbafeelisting',bbafeelistingRouter);
+app.use('/api/billslisting',billslistingRouter);
+app.use('/api/purchaselisting',purchaselistingRouter);
+
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
