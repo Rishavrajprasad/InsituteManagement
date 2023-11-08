@@ -16,7 +16,6 @@ export default function Staff() {
     fname: '',
     email: '',
     phone: '',
-   
     postselect: '',
     salary: 0,
     month: '',
@@ -44,7 +43,7 @@ export default function Staff() {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/listing/create', {
+      const res = await fetch('/api/staffsalarylisting/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,6 +64,7 @@ export default function Staff() {
       setLoading(false);
     }
   };
+
   return (
     <div>
         <div>
@@ -74,7 +74,7 @@ export default function Staff() {
         <div
         className="bg-cover bg-center h-screen"
         style={{
-          backgroundImage: `url(${bgImage})`, // Use the imported image
+          backgroundImage: `url(${bgImage})`, 
         }}
       >
         <div className="text-white text-md md:text-3xl uppercase font-bold text-center py-5">
@@ -82,27 +82,27 @@ export default function Staff() {
         </div>
         <div className='p-3 max-w-lg mx-auto'>
             <form onSubmit={handleSubmit} className='flex flex-col gap-4' >
-          <input type="text" placeholder='Full Name' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='fname' onChange={handleChange}
-            value={formData.fname} required/>
+          <input type="text" placeholder='Full Name' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='fname'onChange={handleChange}
+            value={formData.fname}
+            required/>
           <input type="email" placeholder='Email' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='email' onChange={handleChange}
-            value={formData.email} required/>
+            value={formData.email}
+            required/>
           <input type="tel" placeholder='Phone Number' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='phone' onChange={handleChange}
             value={formData.phone} required/>
           
-        <select id="postselect" className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' onChange={handleChange}
-            value={formData.postselect}>
+        <select id="postselect" type='text' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' onChange={handleChange}
+            value={formData.postselect} required>
                 <option value="" disabled selected>Select Position</option>
-                <option value='registrar' id ='registrar'>Registrar</option>
-                <option value='assistant_registrar' id ='assistant_registrar'>Assistant Registrar</option>
-                <option value="accountant" id = 'accountant'>Accountant</option>
-                <option value="clerk" id = 'staff'>clerk</option>
-                <option value="labassistant" id = 'labassistant'>Accountant</option>
-
+                <option value="hod" id ='hod'>Head of Department</option>
+                <option value="aprof" id ='aprof'>Associate Professor</option>
+                <option value="prof" id = 'prof'>Professor</option>
         </select>
-        <input type="text" placeholder='Salary Amount' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='salary'required onChange={handleChange}
+        <input type="text" placeholder='Salary Amount' className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' id='salary'required
+        onChange={handleChange}
         value={formData.salary}/>
         <select id="month" className='border p-1 px-5 rounded-lg opacity-90 focus:outline-none' onChange={handleChange}
-            value={formData.month}>
+            value={formData.month} required>
                 
                 <option value="" disabled selected>Select Month</option>
                 <option value="January">January</option>
@@ -119,10 +119,11 @@ export default function Staff() {
                 <option value="December">December</option>
 
         </select>
-        </form>
         <button disabled={loading} className='w-full bg-green-700  text-white rounded-lg p-3 my-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Adding...' : 'Add to Database'}</button>
         <button className='w-full bg-slate-700  text-white rounded-lg p-3  uppercase hover:opacity-95 disabled:opacity-80'>Update Details</button>
         {error && <p className='text-red-700 text-sm'>{error}</p>}
+        </form>
+        
         </div>
         
 

@@ -44,7 +44,7 @@ export default function Faculty() {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/listing/create', {
+      const res = await fetch('/api/facultysalarylisting/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

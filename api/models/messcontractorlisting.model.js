@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const messcontractorlistingSchema = new mongoose.Schema(
     {
-        fname:{
+       cname:{
             type:String,
             required:true,
         },
@@ -14,7 +14,7 @@ const messcontractorlistingSchema = new mongoose.Schema(
             type:Number,
             required:true,
         },
-        salary:{
+        messbill:{
             type:Number,
             required:true,
         },
